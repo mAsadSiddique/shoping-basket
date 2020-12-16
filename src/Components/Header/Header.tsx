@@ -2,37 +2,53 @@ import React from 'react'
 import './Header.css'
 import { NavLink } from 'react-router-dom';
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
+import basket from '../Login/shopping-basket.png';
 
 function Header() {
     return (
         <div>
+            <Navbar bg="dark" variant="dark" expand="lg">
+                <NavLink to="/home">
+                    <img
+                        className="logo"
+                        src="https://www.libertybooks.com/image/catalog/logo/300x300-02c.png" />
+                </NavLink>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="mr-auto">
+                        <NavLink to="/home"
+                            activeClassName="menue-active"
+                        >
 
-            <Navbar bg="dark" variant="dark">
-                <Navbar.Brand href="#home">
-                <img
-                    className="logo"
-                    src="https://www.libertybooks.com/image/catalog/logo/300x300-02c.png" />
-                </Navbar.Brand>
-                <Nav className="mr-auto">
-                <NavLink to="about" > Product </NavLink>
-                    <Nav.Link href="#features">Features</Nav.Link>
-                    <Nav.Link href="#pricing">Pricing</Nav.Link>
-                </Nav>
-                <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                    <Button variant="outline-info">Search</Button>
-                </Form>
+                            Home </NavLink>
+                        <NavLink
+                            to="about"
+                            activeClassName="menue-active"
+                        > Product </NavLink>
+
+                    </Nav>
+
+                    <div className="log__in">
+                        <NavLink
+                            to="checkout"
+
+                            activeClassName="menue-active"
+                        >
+                            Hi, Hello Sign In
+                </NavLink>
+
+                        <NavLink to="login" activeClassName="menu-active">
+                            <img className="basket" src={basket} />
+
+                        </NavLink>
+                    </div>
+
+                </Navbar.Collapse>
             </Navbar>
 
 
 
-       
-                
-              
-                    
-                    
-               
-         
+
 
 
         </div>
