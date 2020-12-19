@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import './Header.css'
 import { NavLink } from 'react-router-dom';
-import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
+import { Navbar, Nav, Overlay, Tooltip } from 'react-bootstrap';
 import basket from '../Login/shopping-basket.png';
 
 function Header() {
+
+    const [show, setShow] = useState(false);
+    const target = useRef(null);
+
+
+
     return (
         <div>
             <Navbar bg="dark" variant="dark" expand="lg">
@@ -36,12 +42,23 @@ function Header() {
                         >
                             Hi, Hello Sign In
                 </NavLink>
-
-                        <NavLink to="login" activeClassName="menu-active">
-                            <img className="basket" src={basket} />
-
-                        </NavLink>
                     </div>
+
+
+                    <NavLink ref={target} onClick={() => setShow(!show)}
+                        to="login" activeClassName="menu-active">
+                        <span className="amount">0</span>
+
+                        <img className="basket" src={basket} />
+                    </NavLink>
+                    <Overlay target={target.current} show={show} placement="left" >
+                        {(props) => (
+                            <Tooltip id="overlay-example" {...props}>
+                               Your Shoping Cart is Empty
+                            </Tooltip>
+                        )}
+                    </Overlay>
+
 
                 </Navbar.Collapse>
             </Navbar>

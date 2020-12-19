@@ -26,8 +26,8 @@
 }
 
 .basket {
-    display: inline-block;
-    justify-content: right;
+    /* display: inline-block;
+    justify-content: right; */
     width: 50px;
     height: 45px;
 }
@@ -36,4 +36,12 @@
     text-decoration: none;
     padding: 10px;
     color: #FFFFFF80;
+}
+
+.amount {
+    display: flex;
+    justify-content: center;
+    /* font-weight: bold; */
+    color: white;
+    margin: 0px;
 }
