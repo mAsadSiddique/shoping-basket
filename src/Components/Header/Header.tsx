@@ -3,13 +3,16 @@ import './Header.css'
 import { NavLink } from 'react-router-dom';
 import { Navbar, Nav, Overlay, Tooltip } from 'react-bootstrap';
 import basket from '../Login/shopping-basket.png';
+import {  useSelector } from 'react-redux';
+import { BasketState } from '../Redux/ReduxComponent'
 
 function Header() {
 
-    const [show, setShow] = useState(false);
-    const target = useRef(null);
+    // const [show, setShow] = useState(false);
+    // const target = useRef(null);
+    const basket1 = useSelector<BasketState, BasketState["basket"]>((state) => state.basket)
 
-
+    console.log(basket1)
 
     return (
         <div>
@@ -36,7 +39,7 @@ function Header() {
 
                     <div className="log__in">
                         <NavLink
-                            to="checkout"
+                            to="login"
 
                             activeClassName="menue-active"
                         >
@@ -44,20 +47,20 @@ function Header() {
                 </NavLink>
                     </div>
 
-
-                    <NavLink ref={target} onClick={() => setShow(!show)}
-                        to="login" activeClassName="menu-active">
-                        <span className="amount">0</span>
+                    {/* ref={target} onClick={() => setShow(!show)} */}
+                    <NavLink 
+                        to="checkout" activeClassName="menu-active">
+                        <span className="amount">{basket1.length}</span>
 
                         <img className="basket" src={basket} />
                     </NavLink>
-                    <Overlay target={target.current} show={show} placement="left" >
+                    {/* <Overlay target={target.current} show={show} placement="left" >
                         {(props) => (
                             <Tooltip id="overlay-example" {...props}>
-                               Your Shoping Cart is Empty
+                                Your Shoping Cart is Empty
                             </Tooltip>
                         )}
-                    </Overlay>
+                    </Overlay> */}
 
 
                 </Navbar.Collapse>

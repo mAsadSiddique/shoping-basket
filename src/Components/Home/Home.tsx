@@ -9,7 +9,7 @@ import imagesData from '../BooksImagesData/Images.json';
 
 
 function Home() {
-    let images: { name: String, author: String, img: String }[] = imagesData;
+    let images: { name: String, author: String, ID: number, img: String, price: number }[] = imagesData;
     console.log('Images Data', imagesData)
 
 
@@ -55,14 +55,18 @@ function Home() {
                                 images.map((Data: {
                                     name: String;
                                     author: String;
+                                    ID: number,
                                     img: String;
+                                    price: number;
                                 }, ind: number) => {
                                     return (
                                         <Cardset
-                                            key={ind}
+                                            ind={ind}
+                                            Id={Data.ID}
                                             Image={Data.img}
                                             author={Data.author}
                                             name={Data.name}
+                                            price={Data.price}
                                         />
                                     )
                                 })
